@@ -11,6 +11,7 @@
 @endcomponent
 
 <div class="container">
+    @include('partials._messages')
     <div class="row">
         <div class="col-12">
             @include('cliente.partials._buttons')

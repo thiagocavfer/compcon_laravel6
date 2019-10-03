@@ -2,13 +2,14 @@
 @section('content')
 @component('layouts.components.header')
     @slot('title')
-        Cadastrar clientes 
+        Cadastrar cliente
     @endslot
     @slot('subtitle')
         Preencha o formulário abaixo com os dados do novo cliente.
     @endslot
 @endcomponent
 <div class="container">
+    @include('partials._messages')
     <div class="row">
         <div class="col-12">
             {{ Form::open(['route' => 'cliente.store', 'method' => 'post']) }}
