@@ -9,6 +9,7 @@
     @endslot
 @endcomponent
 <div class="container">
+    @include('partials._messages')
     <div class="row">
         <div class="col-12">
             {{ Form::open(['route' => 'cliente.store', 'method' => 'post']) }}

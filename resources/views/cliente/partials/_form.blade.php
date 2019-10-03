@@ -42,15 +42,12 @@
                     old("telefone"),
                     [
                         "id" => "telefone",
-                        "class" => "form-control",
+                        "class" => "form-control phone_with_ddd",
                         "autocomplete" => "off"
                     ])
                 }}
-                <small 
-                    class="form-text text-muted">
-                    Preenchimento opcional
-                </small>
             </div>
+            @include('partials._preenchimento_opcional')
         </div>
     </div>
 </div>

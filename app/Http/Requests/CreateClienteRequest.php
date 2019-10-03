@@ -32,6 +32,7 @@ class CreateClienteRequest extends FormRequest
             ],
             'email' => [
                 'required',
+                'email',
                 'max:100',
                 'min:2',
                 'email'
