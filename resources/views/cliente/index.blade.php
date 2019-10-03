@@ -1,40 +1,28 @@
 @extends('layouts.app')
 @section('content')
+
+@component('layouts.components.header')
+    @slot('title')
+        Clientes 
+    @endslot
+    @slot('subtitle')
+        Lista de clientes cadastrados
+    @endslot
+@endcomponent
+
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Lista de clientes</div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>NOME</th>
-                                <th>E-MAIL</th>
-                                <th>TELEFONE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($clientes as $cliente)
-                                <tr>
-                                    <td>{{$cliente->id}}</td>
-                                    <td>{{$cliente->nome}}</td>
-                                    <td>{{$cliente->email}}</td>
-                                    <td>{{$cliente->telefone}}</td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="4">Não existem clientes cadastrados.</td>
-                                </tr>
-                            @endforelse    
-                        </tbody>
-                    </table>
-                    <hr>
-                    <a href="{{route('cliente.create')}}" class="btn btn-light">Cadastrar cliente</a>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-12">
+            @include('cliente.partials._buttons')
+            <hr>
         </div>
-    </div>
+        <div class="col-12">
+            @include('cliente.partials._table')
+        </div>
+        <div class="col-12">
+            <hr>
+            @include('cliente.partials._buttons')
+        </div>  
+    </div>         
 </div>
 @endsection

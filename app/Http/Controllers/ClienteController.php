@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cliente;
+use App\Http\Requests\CreateClienteRequest;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -34,15 +35,28 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateClienteRequest $request)
     {
-        Cliente::create([
-            'nome' => $request->nome,
-            'email' => $request->email,
-            'telefone' => $request->telefone,
-        ]);
+        \DB::beginTransaction();
+        try {
 
-        return redirect('cliente');
+            Cliente::create([
+                'nome' => $request->nome,
+                'email' => $request->email,
+                'telefone' => $request->telefone,
+            ]);
+
+            \DB::commit();
+
+            return redirect(route('cliente.index'))
+                ->with('success', 'Cliente cadastrado com sucesso.');
+
+        } catch (\Throwable $th) {
+            \DB::rollback();
+            return back()
+                ->withInput()
+                ->withErrors($th->getMessage());
+        }
     }
 
     /**
