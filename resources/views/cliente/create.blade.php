@@ -2,7 +2,7 @@
 @section('content')
 @component('layouts.components.header')
     @slot('title')
-        Cadastrar clientes 
+        Cadastrar cliente
     @endslot
     @slot('subtitle')
         Preencha o formulário abaixo com os dados do novo cliente.
