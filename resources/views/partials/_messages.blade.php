@@ -13,6 +13,5 @@
                 {!! \Session::get('success') !!}
             </div>
         @endif
-        <hr>
     </div>
 </div>
